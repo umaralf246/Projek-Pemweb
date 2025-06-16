@@ -9,7 +9,7 @@
         <form action="#" method="POST" class="space-y-4">
             @csrf
             <textarea class="w-full border border-gray-300 rounded p-3" rows="5" placeholder="Tulis feedback kamu di sini..."></textarea>
-            <button type="submit" class="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 transition">
+            <button type="submit" class="bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
                 Kirim Feedback
             </button>
         </form>
