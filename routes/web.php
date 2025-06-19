@@ -31,3 +31,7 @@ Route::get('/feedback/{id}', function ($id) {
 Route::post('/feedback/{id}', function (Request $request, $id) {
     return redirect()->route('feedback', $id)->with('showModal', true);
 })->name('feedback.submit')->middleware('auth');
+
+Route::get('/', function () {
+    return redirect()->route('dashboard'); // atau bisa 'profile.edit'
+});
