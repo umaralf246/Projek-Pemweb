@@ -9,3 +9,8 @@ Route::get('/', function () {
 Route::get('/', function () {
     return view('tambah_event');
 });
+
+use App\Http\Controllers\EventController;
+
+Route::get('/tambah-event', [EventController::class, 'form']);
+Route::post('/tambah-event', [EventController::class, 'simpan']);
