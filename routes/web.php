@@ -2,6 +2,8 @@
 
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HistoryController;
+use Illuminate\Http\Request;
 
 Route::get('/', function () {
     return view('welcome');
@@ -19,10 +21,13 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__.'/auth.php';
 
-Route::get('/history', function () {
-    return view('history');
-})->middleware('auth');
+Route::get('/history', [HistoryController::class, 'index'])->middleware('auth')->name('history');
+
 
 Route::get('/feedback/{id}', function ($id) {
     return view('feedback', ['id' => $id]);
-})->middleware('auth');
+})->name('feedback')->middleware('auth');
+
+Route::post('/feedback/{id}', function (Request $request, $id) {
+    return redirect()->route('feedback', $id)->with('showModal', true);
+})->name('feedback.submit')->middleware('auth');

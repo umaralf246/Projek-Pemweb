@@ -9,18 +9,31 @@
         <h1 class="text-3xl font-bold text-blue-900 mb-8 text-center">Riwayat Event</h1>
 
         <div class="grid gap-8 grid-cols-1 md:grid-cols-2">
-            @for ($i = 1; $i <= 4; $i++)
-            <div class="bg-white rounded-lg shadow hover:shadow-md overflow-hidden transition">
-                <img src="https://source.unsplash.com/600x300/?event,{{ $i }}" alt="Event {{ $i }}" class="w-full h-48 object-cover">
-                <div class="p-6">
-                    <h2 class="text-xl font-semibold text-blue-800 mb-2">Event {{ $i }}</h2>
-                    <p class="text-gray-600 mb-4">Deskripsi singkat event ini menjelaskan isi atau manfaat eventnya.</p>
-                    <a href="{{ url('/feedback/' . $i) }}" class="inline-block bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
+            @foreach ($events as $event)
+            <div x-data="{ open: false }" class="bg-white rounded-lg shadow hover:shadow-md overflow-hidden transition">
+                <img src="{{ $event['gambar'] }}" alt="Event {{ $event['id'] }}"
+                     class="w-full h-48 object-cover cursor-pointer" @click="open = !open">
+                <div class="p-6 cursor-pointer" @click="open = !open">
+                    <h2 class="text-xl font-semibold text-blue-800 mb-2">{{ $event['judul'] }}</h2>
+                    <p class="text-gray-600 mb-2">{{ $event['deskripsi'] }}</p>
+
+                    <template x-if="open">
+                        <div class="mt-2 text-sm text-gray-700 space-y-2">
+                            <p><strong>Lokasi:</strong> Aula Kampus A</p>
+                            <p><strong>Pembicara:</strong> (Dummy) Ust. H. Muhammad Nur, M.Kom</p>
+                            <p><strong>Fasilitas:</strong> Snack, Sertifikat, Ilmu</p>
+                        </div>
+                    </template>
+
+                    <p class="text-sm text-gray-500 mt-4">🕒 {{ $event['waktu'] }}</p>
+
+                    <a href="{{ url('/feedback/' . $event['id']) }}" 
+                       class="inline-block mt-4 bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
                         Beri Feedback
                     </a>
                 </div>
             </div>
-            @endfor
+            @endforeach
         </div>
     </div>
 </x-app-layout>

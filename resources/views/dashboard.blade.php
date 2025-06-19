@@ -11,14 +11,6 @@
                 <div class="p-6 text-gray-900">
                     {{ __("You're logged in!") }}
                 </div>
-                <div class="space-x-4">
-        <a href="{{ url('/history') }}" class="inline-block bg-blue-900 text-white px-4 py-2 rounded hover:bg-blue-800 transition">
-            History Event
-        </a>
-        <a href="{{ url('/feedback/1') }}" class="inline-block bg-gray-300 text-gray-800 px-4 py-2 rounded hover:bg-gray-400 transition">
-            Feedback (Contoh)
-        </a>
-    </div>
             </div>
         </div>
     </div>

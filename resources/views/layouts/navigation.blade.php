@@ -18,6 +18,17 @@
                 </div>
             </div>
 
+            <!-- Riwayat Event Link -->
+            <div class="hidden sm:flex sm:items-center sm:ms-6">
+                <a href="{{ route('history') }}" class="text-sm text-gray-600 hover:text-blue-800 flex items-center gap-1">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6l4 2"></path>
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 2a10 10 0 100 20 10 10 0 000-20z"></path>
+                    </svg>
+                    <span>Riwayat</span>
+                </a>
+</div>
+
             <!-- Settings Dropdown -->
             <div class="hidden sm:flex sm:items-center sm:ms-6">
                 <x-dropdown align="right" width="48">
@@ -87,7 +98,6 @@
                 <!-- Authentication -->
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
-
                     <x-responsive-nav-link :href="route('logout')"
                             onclick="event.preventDefault();
                                         this.closest('form').submit();">
