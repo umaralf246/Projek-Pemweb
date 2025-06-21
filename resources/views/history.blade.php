@@ -1,9 +1,4 @@
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-blue-900 leading-tight">
-            Riwayat Event
-        </h2>
-    </x-slot>
 
     <div class="max-w-6xl mx-auto px-4 py-10">
         <h1 class="text-3xl font-bold text-blue-900 mb-8 text-center">Riwayat Event</h1>
