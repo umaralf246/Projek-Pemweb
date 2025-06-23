@@ -16,6 +16,7 @@ class ProfileController extends Controller
      */
     public function edit(Request $request): View
     {
+        /** @var \Illuminate\Http\Request $request */
         return view('profile.edit', [
             'user' => $request->user(),
         ]);
@@ -26,6 +27,7 @@ class ProfileController extends Controller
      */
     public function update(ProfileUpdateRequest $request): RedirectResponse
     {
+        /** @var \App\Http\Requests\ProfileUpdateRequest|\Illuminate\Http\Request $request */
         $user = $request->user();
 
         // Update nama dan email
@@ -51,6 +53,7 @@ class ProfileController extends Controller
      */
     public function destroy(Request $request): RedirectResponse
     {
+        /** @var \Illuminate\Http\Request $request */
         $request->validateWithBag('userDeletion', [
             'password' => ['required', 'current_password'],
         ]);
