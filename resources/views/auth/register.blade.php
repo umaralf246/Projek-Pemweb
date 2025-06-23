@@ -55,14 +55,15 @@
             <h2 class="text-[var(--secondary-color)] text-center text-3xl sm:text-4xl font-bold leading-tight tracking-tight">
               Daftar Akun K-Eventory
             </h2>
-            <form class="space-y-6" action="/login" method="GET">
+            <form class="space-y-6" action="{{ route('register') }}" method="POST">
+              @csrf
               <div>
                 <label for="full-name" class="block text-sm font-medium text-[var(--secondary-color)] mb-1">Nama Lengkap</label>
                 <div class="form-input-container">
                   <svg class="form-input-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M15.75 6a3.75 3.75 0 1 1-7.5 0 3.75 3.75 0 0 1 7.5 0ZM4.501 20.118a7.5 7.5 0 0 1 14.998 0A17.933 17.933 0 0 1 12 21.75c-2.676 0-5.216-.584-7.499-1.632Z" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
-                  <input type="text" name="full-name" id="full-name" placeholder="Masukkan nama lengkap" required class="form-input block w-full rounded-lg border border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 py-2 text-sm text-[var(--secondary-color)] placeholder-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] focus:ring-opacity-50">
+                  <input type="text" name="name" id="name" placeholder="Masukkan nama lengkap" required class="form-input block w-full rounded-lg border border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 py-2 text-sm text-[var(--secondary-color)] placeholder-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] focus:ring-opacity-50">
                 </div>
               </div>
               <div>
@@ -71,7 +72,7 @@
                   <svg class="form-input-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M21.75 6.75v10.5a2.25 2.25 0 0 1-2.25 2.25h-15a2.25 2.25 0 0 1-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0 0 19.5 4.5h-15a2.25 2.25 0 0 0-2.25 2.25m19.5 0v.243a2.25 2.25 0 0 1-1.07 1.916l-7.5 4.615a2.25 2.25 0 0 1-2.36 0L3.32 8.91a2.25 2.25 0 0 1-1.07-1.916V6.75" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
-                  <input type="email" name="campus-email" id="campus-email" placeholder="Masukkan email kampus" required class="form-input block w-full rounded-lg border border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 py-2 text-sm text-[var(--secondary-color)] placeholder-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] focus:ring-opacity-50">
+                  <input type="email" name="email" id="email" placeholder="Masukkan email kampus" required class="form-input block w-full rounded-lg border border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 py-2 text-sm text-[var(--secondary-color)] placeholder-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] focus:ring-opacity-50">
                 </div>
               </div>
               <div>
@@ -89,7 +90,7 @@
                   <svg class="form-input-icon w-5 h-5" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
                     <path d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" stroke-linecap="round" stroke-linejoin="round"></path>
                   </svg>
-                  <input type="password" name="confirm-password" id="confirm-password" placeholder="Ulangi kata sandi" required class="form-input block w-full rounded-lg border border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 py-2 text-sm text-[var(--secondary-color)] placeholder-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] focus:ring-opacity-50">
+                  <input type="password" name="password_confirmation" id="password_confirmation" placeholder="Ulangi kata sandi" required class="form-input block w-full rounded-lg border border-[var(--border-color)] bg-[var(--background-color)] h-12 px-4 py-2 text-sm text-[var(--secondary-color)] placeholder-[var(--accent-color)] focus:border-[var(--primary-color)] focus:ring-[var(--primary-color)] focus:ring-opacity-50">
                 </div>
               </div>
               <div class="flex items-center">
