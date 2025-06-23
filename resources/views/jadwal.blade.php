@@ -103,6 +103,7 @@
     </div>
   </section>
 
+   <!-- Footer Navigasi Bawah -->
   <footer class="footer-modern">
     <div class="footer-nav">
       <a href="{{ url('/kalender') }}" class="footer-btn">
@@ -115,7 +116,7 @@
       </a>
       <a href="{{ url('/profil') }}" class="footer-btn">
         <span class="emoji">👤</span>
-        <span class="label">Akun Saya</span>
+        <span class="label">Akun</span>
       </a>
     </div>
   </footer>
@@ -153,3 +154,4 @@
   </script>
 </body>
 </html>
+

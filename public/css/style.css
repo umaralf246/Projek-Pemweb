@@ -510,3 +510,41 @@ nav.filters {
   font-size: 20px;
   display: block;
 }
+
+/* === Footer Navigasi Modern === */
+.footer-modern {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  background: linear-gradient(to right, #9b30ff, #da70d6);
+  color: white;
+  box-shadow: 0 -2px 6px rgba(0, 0, 0, 0.15);
+  z-index: 1000;
+}
+
+.footer-nav {
+  display: flex;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+
+.footer-btn {
+  text-align: center;
+  text-decoration: none;
+  color: white;
+  font-size: 14px;
+}
+
+.footer-btn .emoji {
+  font-size: 20px;
+  display: block;
+}
+
+.footer-btn:hover {
+  opacity: 0.85;
+}
+
+/* Tambahan supaya konten atas tidak ketiban footer */
+body {
+  padding-bottom: 70px;
+}
