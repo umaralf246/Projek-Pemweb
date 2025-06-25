@@ -4,12 +4,16 @@
     <meta charset="UTF-8">
     <title>Jadwal Saya - K-Eventory</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style type="text/tailwindcss">
         :root {
             --k-eventory-primary: #2563eb;
-            --k-eventory-secondary: #f3f4f6;
+            /* Variabel secondary kita biarkan, tapi tidak kita pakai untuk teks di background putih */
+            --k-eventory-secondary-bg: #f3f4f6; 
             --k-eventory-tertiary: #9ca3af;
         }
         body {
@@ -26,7 +30,6 @@
 <body class="bg-slate-50">
 
 <div class="min-h-screen flex flex-col">
-    <!-- Navbar -->
     <header class="flex items-center justify-between border-b border-slate-200 bg-white px-6 sm:px-10 py-3">
         <div class="flex items-center gap-3 text-[var(--k-eventory-primary)]">
             <div class="size-6">
@@ -41,13 +44,11 @@
             <a href="{{ route('jadwal') }}" class="text-sm font-bold text-[var(--k-eventory-primary)]">Jadwal</a>
             <a href="/history" class="text-sm text-slate-700 hover:text-[var(--k-eventory-primary)]">Riwayat</a>
 
-            <!-- Dropdown avatar -->
-                    <div class="relative" x-data="{ open: false }">
+            <div class="relative" x-data="{ open: false }">
               <button @click="open = !open" class="focus:outline-none">
-                <div class="bg-cover bg-center rounded-full size-10 border-2 border-[var(--k-eventory-primary)]"style='background-image: url("data:image/jpeg;base64,/9j/4AAQSkZJRgAB...TRUNCATED...");'><div>
+                <div class="bg-cover bg-center rounded-full size-10 border-2 border-[var(--k-eventory-primary)]" style='background-image: url("https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=2563eb&color=fff");'></div>
               </button>
 
-                <!-- Dropdown menu -->
                 <div x-show="open" @click.away="open = false" x-transition
                      class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-md z-50">
                     <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil</a>
@@ -60,29 +61,33 @@
         </nav>
     </header>
 
-    <!-- Main -->
     <main class="flex-1 container max-w-6xl mx-auto px-4 py-10">
         <h1 class="text-3xl font-bold text-[var(--k-eventory-primary)] text-center mb-8">Jadwal Saya</h1>
 
         @if($events->isEmpty())
             <p class="text-center text-gray-500">Belum ada event yang kamu ikuti.</p>
         @else
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach($events as $event)
                     <div class="bg-white rounded-lg overflow-hidden k-eventory-card-shadow k-eventory-card-shadow-hover transition-shadow duration-300">
+                        {{-- PERBAIKAN 1: Path gambar diperbaiki --}}
                         @if($event->image_url)
-                            <img src="{{ $event->image_url }}" alt="{{ $event->title }}" class="w-full h-48 object-cover">
+                            <img src="{{ asset('storage/' . $event->image_url) }}" alt="{{ $event->title }}" class="w-full h-48 object-cover">
                         @endif
                         <div class="p-4">
                             <h3 class="text-xl font-semibold text-[var(--k-eventory-primary)]">{{ $event->title }}</h3>
+                            
+                            {{-- PERBAIKAN 2: Warna teks deskripsi diubah menjadi lebih gelap --}}
                             @if($event->description)
-                                <p class="text-sm text-[var(--k-eventory-secondary)] mt-1">{{ $event->description }}</p>
+                                <p class="text-sm text-gray-600 mt-2">{{ $event->description }}</p>
                             @endif
-                            <p class="text-xs text-[var(--k-eventory-tertiary)] mt-2">
+                            
+                            {{-- PERBAIKAN 3: Warna teks tanggal dan lokasi diubah menjadi lebih gelap --}}
+                            <p class="text-sm text-gray-500 mt-4">
                                 {{ \Carbon\Carbon::parse($event->event_time)->translatedFormat('l, d F Y – H:i') }} WIB
                             </p>
                             @if($event->location)
-                                <p class="text-xs text-[var(--k-eventory-tertiary)] mt-1">Lokasi: {{ $event->location }}</p>
+                                <p class="text-sm text-gray-500 mt-1">Lokasi: {{ $event->location }}</p>
                             @endif
                         </div>
                     </div>
@@ -91,8 +96,7 @@
         @endif
     </main>
 
-    <!-- Footer -->
-    <footer class="py-6 text-center text-sm text-[var(--text-secondary)] border-t border-gray-200 bg-white">
+    <footer class="py-6 text-center text-sm text-gray-500 border-t border-gray-200 bg-white">
     © 2025 K-Eventory. All rights reserved.</footer>
 </div>
 

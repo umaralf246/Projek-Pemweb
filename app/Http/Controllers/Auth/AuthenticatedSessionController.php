@@ -9,6 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\View\View;
 
+
 class AuthenticatedSessionController extends Controller
 {
     /**
@@ -27,19 +28,17 @@ class AuthenticatedSessionController extends Controller
      */
     public function store(LoginRequest $request): RedirectResponse
     {
-        /** @var \Illuminate\Http\Request $request */  
         $request->authenticate();
 
         $request->session()->regenerate();
 
-        \Log::info('LOGIN DEBUG', [
-        'check' => Auth::check(),
-        'user' => Auth::user(),
-        'session_id' => session()->getId(),
-        'session_all' => session()->all(),
-        ]);
+        // LOGIKA BARU UNTUK REDIRECT BERDASARKAN ROLE
+        $user = Auth::user();
+        if ($user->role === 'admin') {
+            return redirect('/admin'); // Arahkan ke panel admin
+        }
 
-
+        // Untuk user biasa, arahkan ke dashboard
         return redirect()->intended(route('dashboard', absolute: false));
     }
 

@@ -81,20 +81,27 @@
           @foreach ($events as $event)
           <div class="bg-[var(--card-bg)] rounded-xl shadow-lg overflow-hidden flex flex-col" x-data="{ expanded: false }">
             <img alt="Event Image" class="w-full h-48 object-cover"
-              src="{{ $event->image_url ?? 'https://via.placeholder.com/600x400?text=Event+Image' }}">
+              src="{{ $event->image_url ? asset('storage/' . $event->image_url) : 'https://via.placeholder.com/600x400?text=Event+Image' }}">
             <div class="p-5 flex flex-col flex-1">
               <h3 class="text-lg font-semibold text-[var(--text-primary)] mb-1">{{ $event->title }}</h3>
+              
+              {{-- Ganti $event->event_date menjadi $event->event_time --}}
               <p class="text-xs text-[var(--text-secondary)] mb-2">
-                {{ \Carbon\Carbon::parse($event->event_date)->translatedFormat('F j, Y, g:i A') }}
+                {{ \Carbon\Carbon::parse($event->event_time)->translatedFormat('F j, Y, g:i A') }}
               </p>
+
+              {{-- Ganti $event->short_description dengan Str::limit dari $event->description --}}
               <p class="text-sm text-[var(--text-secondary)] mb-4 flex-1">
-                {{ $event->short_description }}
+                {{ Str::limit($event->description, 100) }}
               </p>
+
+              {{-- Untuk detail, gunakan $event->description secara penuh --}}
               <div class="mt-2 mb-4" x-show="expanded" x-collapse>
                 <p class="text-sm text-[var(--text-secondary)]">
-                  {{ $event->full_description }}
+                  {{ $event->description }}
                 </p>
               </div>
+
               <div class="mt-auto flex flex-col sm:flex-row sm:items-center gap-3">
                 <button @click="expanded = !expanded"
                   class="btn-secondary w-full sm:w-auto text-sm font-medium py-2 px-4 rounded-lg flex items-center justify-center gap-2">

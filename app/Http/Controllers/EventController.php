@@ -7,11 +7,18 @@ use App\Models\Registration;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
 
 
 class EventController extends Controller
 {
     // Tampilkan halaman daftar event
+    public function dashboard()
+    {
+        $events = Event::orderBy('event_time', 'asc')->get(); 
+        return view('dashboard', compact('events'));
+    }
+
     public function show($id)
     {
         $event = Event::findOrFail($id);

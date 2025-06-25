@@ -6,8 +6,9 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Filament\Models\Contracts\FilamentUser;
 
-class User extends Authenticatable
+class User extends Authenticatable implements FilamentUser
 {
     /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
@@ -17,10 +18,18 @@ class User extends Authenticatable
      *
      * @var list<string>
      */
+
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        // Untuk saat ini, izinkan semua user.
+        // Nanti bisa Anda modifikasi, contoh: return $this->is_admin;
+        return true;
+    }
     protected $fillable = [
         'name',
         'email',
         'password',
+        'role',
     ];
 
     /**
