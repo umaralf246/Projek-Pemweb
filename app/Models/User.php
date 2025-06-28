@@ -23,7 +23,7 @@ class User extends Authenticatable implements FilamentUser
     {
         // Untuk saat ini, izinkan semua user.
         // Nanti bisa Anda modifikasi, contoh: return $this->is_admin;
-        return true;
+        return $this->role === 'admin' ;
     }
     protected $fillable = [
         'name',
