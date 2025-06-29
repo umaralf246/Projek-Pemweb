@@ -21,6 +21,7 @@
 </head>
 <body class="bg-slate-50 min-h-screen flex flex-col">
 
+  <!-- Header -->
   <header class="bg-white border-b border-gray-200 sticky top-0 z-50">
     <div class="container mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex h-16 items-center justify-between">
@@ -36,12 +37,28 @@
           <a href="/dashboard" class="text-sm text-slate-700 hover:text-[var(--k-eventory-primary)]">Dashboard</a>
           <a href="/jadwal" class="text-sm text-slate-700 hover:text-[var(--k-eventory-primary)]">Jadwal</a>
           <a href="/history" class="text-sm text-slate-700 hover:text-[var(--k-eventory-primary)]">Riwayat</a>
-          <a href="/profile" class="text-sm text-slate-700 hover:text-[var(--k-eventory-primary)]">Profil</a>
+
+          <!-- Avatar Dropdown -->
+          <div class="relative" x-data="{ open: false }">
+            <button @click="open = !open" class="focus:outline-none">
+              <div class="bg-cover bg-center rounded-full size-10 border-2 border-[var(--k-eventory-primary)]"
+                style='background-image: url("https://ui-avatars.com/api/?name={{ urlencode(Auth::user()->name) }}&background=2563eb&color=fff");'></div>
+            </button>
+            <div x-show="open" @click.away="open = false" x-transition
+              class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-md z-50">
+              <a href="/profile" class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Profil</a>
+              <form method="POST" action="/logout">
+                @csrf
+                <button type="submit" class="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100">Logout</button>
+              </form>
+            </div>
+          </div>
         </nav>
       </div>
     </div>
   </header>
 
+  <!-- Main Content -->
   <main class="flex-1 py-12 px-4 sm:px-6 lg:px-8" x-data="{ showModal: {{ session('showModal') ? 'true' : 'false' }} }">
     <div class="max-w-2xl mx-auto">
       <div class="bg-white rounded-xl shadow-lg p-8 space-y-6">
@@ -52,16 +69,17 @@
           @csrf
 
           <div>
-            <label for="name" class="block text-sm font-medium text-gray-700">Nama</label>
-            <input type="text" id="name" name="name" value="{{ $registration->name }}" readonly
-              class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-[var(--k-eventory-primary)] focus:border-[var(--k-eventory-primary)] bg-gray-100 cursor-not-allowed">
+            <label for="name" class="block text-sm font-semibold text-[var(--k-eventory-primary)]">Nama</label>
+            <input type="text" id="name" name="name" value="{{ old('name') }}"
+            placeholder="Tulis nama kamu..." required
+            class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-[var(--k-eventory-primary)] focus:border-[var(--k-eventory-primary)]">
           </div>
 
           <div>
-            <label for="feedback" class="block text-sm font-medium text-gray-700">Feedback</label>
+            <label for="feedback" class="block text-sm font-semibold text-[var(--k-eventory-primary)]">Feedback</label>
             <textarea id="feedback" name="feedback" rows="5" required
-              class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-[var(--k-eventory-primary)] focus:border-[var(--k-eventory-primary)]"
-              placeholder="Tulis feedback kamu di sini...">{{ old('feedback', $registration->feedback) }}</textarea>
+            class="mt-1 w-full border border-gray-300 rounded-lg px-4 py-3 focus:ring-[var(--k-eventory-primary)] focus:border-[var(--k-eventory-primary)]"
+            placeholder="Tulis feedback kamu di sini..."></textarea>
           </div>
 
           <button type="submit" class="btn-primary w-full">
@@ -71,7 +89,7 @@
       </div>
     </div>
 
-    {{-- Modal --}}
+    <!-- Modal -->
     <div x-show="showModal" x-transition
       class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
       <div class="bg-white rounded-lg shadow-xl p-6 max-w-sm w-full text-center">
@@ -85,6 +103,7 @@
     </div>
   </main>
 
+  <!-- Footer -->
   <footer class="py-6 text-center text-sm text-gray-500 border-t border-gray-200 bg-white">
     © 2025 K-Eventory. All rights reserved.
   </footer>

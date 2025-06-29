@@ -30,13 +30,13 @@ Route::get('/daftar/{id}', [UserEventController::class, 'register'])->name('even
 Route::get('/dashboard', [UserEventController::class, 'dashboard'])->middleware(['auth'])->name('dashboard');
 
 
-// Profil
-Route::middleware(['auth'])->group(function () {
-    Route::get('/dashboard', [UserEventController::class, 'dashboard'])->name('dashboard');
-    Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-});
+    // Profil
+    Route::middleware(['auth'])->group(function () {
+        Route::get('/dashboard', [UserEventController::class, 'dashboard'])->name('dashboard');
+        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
+        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
+        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    });
 
 // Jadwal
 Route::get('/jadwal', [ScheduleController::class, 'index'])->middleware(['auth'])->name('jadwal');

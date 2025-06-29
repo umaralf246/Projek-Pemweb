@@ -22,4 +22,9 @@ class Registration extends Model
     {
         return $this->belongsTo(Event::class);
     }
+    public function feedback()
+{
+    return $this->hasOne(Feedback::class);
+}
+
 }
