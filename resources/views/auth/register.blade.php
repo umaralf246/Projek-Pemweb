@@ -58,10 +58,10 @@
                 </div>
             </header>
             <main class="flex flex-1 flex-col lg:flex-row">
-                <div
-                    class="lg:w-1/2 flex items-center justify-center p-6 sm:p-10 lg:p-16 bg-[var(--muted-background-color)] order-2 lg:order-1">
-                    <img alt="Ilustrasi K-Eventory" class="w-full max-w-md object-contain rounded-lg shadow-lg"
-                        src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZNpUlOCsCs5HdpJEj2njncmDrzlaltyVBO8OpQ5mN1eP7cSEsvivThunxYzQ3QgL1dJZug2vIjmXukB-EFvKJeqnGGJBU3NmhJEAFjdLP1dXrvvmhwszEJybkmnenkn14usUg_ux0JRhFdGCpJCFnJp_-o4Eh82lAPtxsRlKgqgWxGzhZcrpB7KtbuoEw_FBAMul6x_0bo79aoKdhuqz7k1nfqUiyG1DnfPPDH4FM1bqtr2BUDgfc3nUyHB06TbCsFQg1TEsmmQU" />
+                    <div class="lg:w-1/2 h-screen flex items-center justify-center p-0 bg-[var(--muted-background-color)] order-2 lg:order-1">
+                    <div class="w-full h-full bg-cover bg-center"
+                        style="background-image: url('/storage/images/dftr.png');">
+                    </div>
                 </div>
                 <div class="lg:w-1/2 flex flex-col items-center justify-center p-6 sm:p-10 order-1 lg:order-2">
                     <div class="w-full max-w-md space-y-6">

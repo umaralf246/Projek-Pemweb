@@ -89,7 +89,7 @@
 <label class="ml-2 block text-sm text-[var(--primary-text-color)]" for="remember-me">Remember me</label>
 </div>
 <div class="text-sm">
-<a class="font-medium text-[var(--primary-color)] hover:text-blue-700 hover:underline" href="#">Forgot password?</a>
+<a class="font-medium text-[var(--primary-color)] hover:text-blue-700 hover:underline" href="/forgot-password">Forgot password?</a>
 </div>
 </div>
 <div>

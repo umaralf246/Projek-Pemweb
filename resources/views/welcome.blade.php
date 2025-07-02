@@ -17,7 +17,8 @@
         font-family: 'Poppins', 'Inter', sans-serif;
       }
       .hero-bg {
-        background-image: url("https://images.unsplash.com/photo-1523240795610-571c6b9db6a8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1740&q=80");background-size: cover;
+        background-image: url("/storage/images/gedung.webp");
+        background-size: cover;
         background-position: center;
       }
         .btn-primary {
@@ -69,7 +70,7 @@
 </header>
 <main class="flex-1">
 <section class="hero-bg text-white">
-<div class="bg-black bg-opacity-50 min-h-[70vh] flex flex-col items-center justify-center text-center px-6 py-20">
+<div class="bg-black bg-opacity-20 min-h-[70vh] flex flex-col items-center justify-center text-center px-6 py-20">
 <div class="max-w-3xl">
 <h1 class="text-4xl sm:text-5xl md:text-6xl font-extrabold leading-tight mb-6 drop-shadow-lg">
                 Direktori Acara Kampus Terlengkap untuk Kamu
