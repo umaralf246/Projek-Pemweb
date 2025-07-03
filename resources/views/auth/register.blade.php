@@ -8,7 +8,7 @@
         href="https://fonts.googleapis.com/css2?display=swap&family=Noto+Sans:wght@400;500;700;900&family=Plus+Jakarta+Sans:wght@400;500;700;800"
         onload="this.rel='stylesheet'" rel="stylesheet" />
     <title>K-Eventory - Daftar</title>
-    <link rel="icon" type="image/png" href="{{ asset('storage/images/logo.png') }}">
+    <link rel="icon" type="image/png" href="{{ asset('images/logo.png') }}">
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
     <style type="text/tailwindcss">
         :root {
@@ -60,7 +60,7 @@
             <main class="flex flex-1 flex-col lg:flex-row">
                     <div class="lg:w-1/2 h-screen flex items-center justify-center p-0 bg-[var(--muted-background-color)] order-2 lg:order-1">
                     <div class="w-full h-full bg-cover bg-center"
-                        style="background-image: url('/storage/images/dftr.png');">
+                        style="background-image: url('images/dftr.png');">
                     </div>
                 </div>
                 <div class="lg:w-1/2 flex flex-col items-center justify-center p-6 sm:p-10 order-1 lg:order-2">
