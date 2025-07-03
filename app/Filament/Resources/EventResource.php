@@ -47,43 +47,46 @@ class EventResource extends Resource
     }
 
         public static function table(Table $table): Table
-    {
-        return $table
-            ->columns([
-                Tables\Columns\ImageColumn::make('image_url')
-                    ->label('Gambar')
-                    ->disk('public'),
-                Tables\Columns\TextColumn::make('title')
-                    ->searchable()
-                    ->sortable(),
-                Tables\Columns\TextColumn::make('event_time')
-                    ->dateTime('d M Y, H:i')
-                    ->sortable()
-                    ->label('Waktu Event'),
-                Tables\Columns\TextColumn::make('location')
-                    ->searchable(),
-                Tables\Columns\TextColumn::make('created_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(), // DIPERBAIKI: Dibuat toggleable, tapi tidak disembunyikan secara default
-                Tables\Columns\TextColumn::make('updated_at')
-                    ->dateTime()
-                    ->sortable()
-                    ->toggleable(), // DIPERBAIKI: Dibuat toggleable, tapi tidak disembunyikan secara default
-            ])
-            ->filters([
-                // Filter bisa ditambahkan di sini jika perlu
-            ])
-            ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
-            ])
-            ->bulkActions([
-                Tables\Actions\BulkActionGroup::make([
-                    Tables\Actions\DeleteBulkAction::make(),
-                ]),
-            ]);
-    }
+{
+    return $table
+        ->columns([
+            Tables\Columns\ImageColumn::make('image_url')
+                ->label('Gambar')
+                ->disk('public'),
+            Tables\Columns\TextColumn::make('title')
+                ->searchable()
+                ->sortable(),
+            Tables\Columns\TextColumn::make('event_time')
+                ->dateTime('d M Y, H:i')
+                ->sortable()
+                ->label('Waktu Event'),
+            Tables\Columns\TextColumn::make('location')
+                ->searchable(),
+            Tables\Columns\TextColumn::make('created_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(),
+            Tables\Columns\TextColumn::make('updated_at')
+                ->dateTime()
+                ->sortable()
+                ->toggleable(),
+        ])
+        ->filters([
+            // Filter bisa ditambahkan di sini jika perlu
+        ])
+        ->actions([
+            Tables\Actions\EditAction::make(),
+            Tables\Actions\DeleteAction::make(),
+        ])
+        ->bulkActions([
+            Tables\Actions\BulkActionGroup::make([
+                Tables\Actions\DeleteBulkAction::make(),
+            ]),
+        ])
+        ->defaultSort('created_at', 'desc'); 
+        
+}
+
     
     public static function getRelations(): array
     {

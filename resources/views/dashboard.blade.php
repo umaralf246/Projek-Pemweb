@@ -5,6 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="csrf-token" content="{{ csrf_token() }}">
   <title>K-Eventory Dashboard</title>
+  <link rel="icon" type="image/png" href="{{ asset('storage/images/logo.png') }}">
+
 
   <!-- Font & Icon -->
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -91,13 +93,11 @@
               </p>
 
               {{-- Ganti $event->short_description dengan Str::limit dari $event->description --}}
-              <p class="text-sm text-[var(--text-secondary)] mb-4 flex-1">
-                {{ Str::limit($event->description, 100) }}
-              </p>
-
-              {{-- Untuk detail, gunakan $event->description secara penuh --}}
-              <div class="mt-2 mb-4" x-show="expanded" x-collapse>
-                <p class="text-sm text-[var(--text-secondary)]">
+              <div class="mb-4 flex-1">
+                <p class="text-sm text-[var(--text-secondary)]" x-show="!expanded">
+                  {{ Str::limit($event->description, 100) }}
+                </p>
+                <p class="text-sm text-[var(--text-secondary)]" x-show="expanded" x-collapse>
                   {{ $event->description }}
                 </p>
               </div>
@@ -111,10 +111,17 @@
                     <path fill-rule="evenodd" d="M5.23 7.21a.75.75 0 011.06.02L10 10.94l3.71-3.71a.75.75 0 111.06 1.06l-4.25 4.25a.75.75 0 01-1.06 0L5.23 8.29a.75.75 0 01.02-1.06z" clip-rule="evenodd"/>
                   </svg>
                 </button>
+                @if (!$event->is_past)
                 <a href="{{ route('event.show', $event->id) }}"
                   class="btn-primary w-full sm:w-auto text-sm font-medium py-2 px-4 rounded-lg text-center">
                   Register for Event
                 </a>
+              @else
+                <button disabled
+                  class="w-full sm:w-auto text-sm font-medium py-2 px-4 rounded-lg text-center bg-gray-300 text-gray-600 cursor-not-allowed">
+                  Event Sudah Berakhir
+                </button>
+              @endif
               </div>
             </div>
           </div>

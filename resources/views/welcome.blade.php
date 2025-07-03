@@ -3,7 +3,7 @@
 <link crossorigin="" href="https://fonts.gstatic.com/" rel="preconnect"/>
 <link as="style" href="https://fonts.googleapis.com/css2?display=swap&amp;family=Poppins:wght@400;500;600;700;800;900&amp;family=Inter:wght@400;500;600;700;800" onload="this.rel='stylesheet'" rel="stylesheet"/>
 <title>K-Eventory</title>
-<link href="data:image/x-icon;base64," rel="icon" type="image/x-icon"/>
+<link rel="icon" type="image/png" href="{{ asset('storage/images/logo.png') }}">
 <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
 <style type="text/tailwindcss">
       :root {
